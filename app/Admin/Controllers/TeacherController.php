@@ -82,7 +82,7 @@ class TeacherController extends AdminController
         $form->text('remark', __('备注'));
 
         $form->saving(function (Form $form) {
-            if ($form->password) {
+            if ($form->password && $form->model()->password != $form->password) {
                 $form->password = Hash::make($form->password);
             }
         });
